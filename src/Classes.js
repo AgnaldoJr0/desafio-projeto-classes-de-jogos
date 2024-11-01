@@ -1,22 +1,34 @@
-const classes = ["Mago", "Guerreiro", "Ninja", "Monge"];
-
-function heroi(classes) {
-    let nome = "Yuto";
-    let idade = 24;
-    let tipoClasse = classes[2];
-    let atk = tipoClasse;
-
-    if (atk === "Mago") {
-        atk = "magia";
-    } else if (atk === "Guerreiro") {
-        atk = "espada";
-    } else if (atk === "Ninja") {
-        atk = "shuriken";
-    } else {
-        atk = "artes marciais";
+class Heroi {
+    constructor(nome, idade, tipoClasse) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipoClasse = tipoClasse;
     }
 
-    return `O ${tipoClasse} ${nome} atacou usando ${atk}.`;
+    atacar() {
+        let atk;
+        
+        switch (this.tipoClasse) {
+            case "Mago":
+                atk = "magia";
+                break;
+            case "Guerreiro":
+                atk = "espada";
+                break;
+            case "Ninja":
+                atk = "shuriken";
+                break;
+            case "Monge":
+                atk = "artes marciais";
+                break;
+            default:
+                atk = "ataque desconhecido";
+        }
+
+        return `O ${this.tipoClasse} ${this.nome} atacou usando ${atk}.`;
+    }
 }
 
-console.log(heroi(classes));
+const classes = ["Mago", "Guerreiro", "Ninja", "Monge"];
+const heroi = new Heroi("Yuto", 24, classes[2]);
+console.log(heroi.atacar());
